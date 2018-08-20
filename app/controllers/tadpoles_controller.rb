@@ -5,6 +5,14 @@ class TadpolesController < ApplicationController
   
   def metamorphose 
     
+    @frog = Frog.new(name: @tadpole.name, color: @tadpole.color, pond_id: @tadpole.pond.id)
+    if @frog.save 
+     @tadpole.destroy 
+     redirect_to :frog_page
+    else
+      
+    end 
+    render :show
   end 
 
   def index
